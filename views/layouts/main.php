@@ -41,6 +41,21 @@ AppAsset::register($this);
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Labs', 'items' => [
+                ['label' => 'Info', 'url' => ['/student/index']],
+                ['label' => 'lab1', 'url' => ['/site/rate-form']],
+                ['label' => 'lab2', 'items' => [
+                    ['label' => 'Directors', 'url' => ['/director/index']],
+                    ['label' => 'Quantity', 'url' => ['/film/quantity']],
+                    ['label' => 'Genres', 'url' => ['/genre/index']],
+                    ['label' => 'Films', 'url' => ['/film/index']],
+                    ['label' => 'Twenty', 'url' => ['/film/twenty']],
+                    ['label' => 'Add new Director', 'url' => ['/director/addition-dir']],
+                    ['label' => 'Find film', 'url' => ['/film/find-film']],
+                    ['label' => 'Delete director', 'url' => ['/director/delete-dir']],
+                ]],
+                ['label' => 'lab3', 'url' => ['/site/lab3']],
+            ]],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
