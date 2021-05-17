@@ -9,7 +9,7 @@
     class Grouppp extends ActiveRecord
     {
         public $groupfind;
-        public $grow = array();
+        public $group;
 
         public static function tableName()
         {

@@ -38,6 +38,7 @@
                     -> orWhere(['=', 'id', "{$model -> grow[13]}"])
                     -> orWhere(['=', 'id', "{$model -> grow[14]}"])
                     -> all();
+
                 $query = Student::find();
                 $query = $query
                     -> where(['=', 'Group_id', $subquery[0] -> id])
@@ -56,10 +57,6 @@
                     -> orWhere(['=', 'Group_id', $subquery[13] -> id])
                     -> orWhere(['=', 'Group_id', $subquery[14] -> id])
                     -> all();
-
-
-
-
 
                 return $this -> render('index-result', [
                     'students' => $query,
