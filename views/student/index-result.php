@@ -38,11 +38,6 @@
                     <th scope="row"><?= Html::encode("{$student -> Stipend}") ?> </th>
                     <th scope="row"><?= Html::encode("{$subquery -> id}") ?> </th>
                     <th scope="row"><?= Html::encode("{$subquery -> Name}") ?> </th>
-                    <th scope="row"><?= Html::encode("{$model -> grow[0]}") ?> </th>
-                    <th scope="row"><?= Html::encode("{$model -> grow[1]}") ?> </th>
-                    <th scope="row"><?= Html::encode("{$subquery[0] -> id}") ?> </th>
-                    <th scope="row"><?= Html::encode("{$subquery[1] -> id}") ?> </th>
-                    <th scope="row"><?= Html::encode("{$subquery[2] -> id}") ?> </th>
 
                 </tr>
                 <?php endforeach; ?>
