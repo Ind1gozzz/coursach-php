@@ -2,6 +2,7 @@
 
     namespace app\models;
 
+    use Yii;
     use yii\db\ActiveRecord;
 
 
@@ -16,6 +17,7 @@
         public $birthDate;
         public $childs;
         public $stipend;
+        public $stip;
 
         public $count;
 
@@ -29,11 +31,8 @@
             return $this -> hasOne(Grouppp::className(), ['id' => 'Group_id']);
         }
 
-        public function rules()
-        {
-            return [
-                ['group', 'integer']
-            ];
-        }
+
+
+
     }
     

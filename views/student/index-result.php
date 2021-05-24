@@ -36,8 +36,8 @@
                     <th scope="row"><?= Html::encode("{$student -> Group_id}") ?> </th>
                     <th scope="row"><?= Html::encode("{$student -> Childs}") ?> </th>
                     <th scope="row"><?= Html::encode("{$student -> Stipend}") ?> </th>
-                    <th scope="row"><?= Html::encode("{$subquery -> id}") ?> </th>
-                    <th scope="row"><?= Html::encode("{$subquery -> Name}") ?> </th>
+                    <th scope="row"><?= Html::encode("{$model -> id}") ?> </th>
+                    <th scope="row"><?= Html::encode("{$model -> group}") ?> </th>
 
                 </tr>
                 <?php endforeach; ?>

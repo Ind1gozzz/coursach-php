@@ -6,36 +6,45 @@
     use yii\web\Controller;
     use app\models\Student;
     use app\models\Grouppp;
+    use app\models\StudentSearch;
+    use yii\web\NotFoundHttpException;
+    use yii\filters\VerbFilter;
+    use yii\data\ActiveDataProvider;
     
 
     class StudentController extends Controller
     {
-        
-
         public function actionIndex()
         {
-            $model = new Student();
             $groups = Grouppp::find()
+                ->all();
+            $model = new StudentSearch();
+            if ($model -> load(Yii::$app -> request -> post()) && $model -> validate())
+            {
+                $query = Student::find() -> andFilterWhere([
+                    'Group_id' => $model -> group,
+                    'Gender' => $model -> gender,
+                    'Childs' => $model -> childs,
+                    'Stipend' => $model -> stipend,       
+                ])
                 -> all();
+                
 
-            if ($model -> load(Yii::$app -> request -> post()))                 //взять из формы все группы и найти их id
-            {                    
-                $query = Student::find();
-                $query = $query
-                    -> where(['=', 'Group_id', $model -> group])
-                    -> all();
-
+                $students = $query;
                 return $this -> render('index-result', [
-                    'students' => $query,
                     'model' => $model,
-                    'subquery' => $subquery
-                    ]);
+                    'students' => $students
+
+                ]);
             } else
             {
                 return $this -> render('index', [
                     'groups' => $groups,
                     'model' => $model
-                ]);
+                ]); 
             }
         }
+        
+
+
     }
