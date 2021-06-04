@@ -4,18 +4,18 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\admin\models\Student */
+/* @var $model app\modules\admin\models\Lecturer */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Students', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Lecturers', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="student-view">
+<div class="lecturer-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <!-- <p>
+    <p>
         <?= // Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= // Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
-    </p> -->
+    </p>
 
     <?= DetailView::widget([
         'model' => $model,
@@ -34,9 +34,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'LastName',
             'Gender',
             'BirthDate',
-            'Grouppp',
+            'Salary',
             'Childs',
-            'Stipend',
+            'Depart',
             'Faculty',
         ],
     ]) ?>

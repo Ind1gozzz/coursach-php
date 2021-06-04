@@ -23,7 +23,12 @@ use Yii;
 
 class Student extends \yii\db\ActiveRecord
 {
-    public $faculty;
+    public $Faculty_id;
+    public $genderrr;
+    public $StudAge;
+    public $stip;
+    public $HasChilds;
+
     /**
      * {@inheritdoc}
      */
@@ -41,7 +46,8 @@ class Student extends \yii\db\ActiveRecord
             [['FirstName', 'LastName', 'Group_id'], 'required'],
             [['Gender'], 'string'],
             [['BirthDate'], 'safe'],
-            [['Group_id', 'Childs', 'Stipend'], 'integer'],
+            [['StudAge'], 'safe'],
+            [['Group_id', 'Childs', 'Stipend', 'Faculty_id'], 'integer'],
             [['FirstName', 'LastName'], 'string', 'max' => 30],
             [['Group_id'], 'exist', 'skipOnError' => true, 'targetClass' => Grouppp::className(), 'targetAttribute' => ['Group_id' => 'id']],
         ];
@@ -98,5 +104,10 @@ class Student extends \yii\db\ActiveRecord
     public function getGrouppp()
     {
         return $this -> group -> Name;
+    }
+
+    public function getFaculty()
+    {
+        return $this -> group -> speciality -> department -> faculty -> Name;
     }
 }
