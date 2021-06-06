@@ -5,6 +5,7 @@ use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 use app\modules\admin\models\Department;
 use app\modules\admin\models\Faculty;
+use app\modules\admin\models\Post;
 
 /* @var $this yii\web\View */
 /* @var $model app\modules\admin\models\LecturerSearch */
@@ -20,6 +21,8 @@ use app\modules\admin\models\Faculty;
         $faculties = Faculty::find('id, Name')
             -> all();
 
+        $posts = Post::find('id, Post')
+            -> all();
     ?>
 
     <?php $form = ActiveForm::begin([
@@ -42,6 +45,8 @@ use app\modules\admin\models\Faculty;
     <?= $form -> field($model, 'Department_id') -> label('Department') -> dropDownList(ArrayHelper::map($departs, 'id', 'Name'), ['prompt' => 'Select the department'])?>
 
     <?= $form -> field($model, 'Faculty_id') -> label('Faculty') -> dropDownList(ArrayHelper::map($faculties, 'id', 'Name'), ['prompt' => 'Select the faculty'])?>
+
+    <?= $form -> field($model, 'Post_idid') -> label('Post') -> dropDownList(ArrayHelper::map($posts, 'Post', 'Post'), ['prompt' => 'Select the post'])?>
 
     <?= $form -> field($model, 'genderrr') -> label('Gender') -> dropDownList(['Male' => 'Male', 'Female' => 'Female'], ['prompt' => 'Select gender']) ?>
 

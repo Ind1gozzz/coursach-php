@@ -25,6 +25,9 @@
             return $this -> hasOne(Faculty::className(), ['id' => 'Faculty_id']);
         }
 
-
+        public function getLecturer()
+        {
+            return $this -> hasMany(Lecturer::className(), ['Department_id' => 'id']);
+        }
     }
     

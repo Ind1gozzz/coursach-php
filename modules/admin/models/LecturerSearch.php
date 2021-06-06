@@ -5,6 +5,7 @@ namespace app\modules\admin\models;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\modules\admin\models\Lecturer;
+use app\modules\admin\models\Post;
 
 /**
  * LecturerSearch represents the model behind the search form of `app\modules\admin\models\Lecturer`.
@@ -74,6 +75,10 @@ class LecturerSearch extends Lecturer
             $date = 0;
         }
 
+        $posts_id = Post::find()
+            -> select('Lecturer_id')
+            -> where(['like', 'Post', "{$this -> Post_idid}"]);
+
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
@@ -87,8 +92,9 @@ class LecturerSearch extends Lecturer
         $query-> andFilterWhere(['like', 'FirstName', $this->FirstName])
             -> andFilterWhere(['like', 'LastName', $this->LastName])
             -> andFilterWhere(['like', 'BirthDate', $date])
-            -> andFilterWhere(['in', 'Department_id', $departmentss]);
-
+            -> andFilterWhere(['in', 'Department_id', $departmentss])
+            -> andFilterWhere(['in', 'id', $posts_id]);
+        
 
 
         if(isset($this -> HasChilds)){

@@ -38,6 +38,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'Childs',
             'Depart',
             'Faculty',
+            'Postt',
+            'Disstheme',            
+            'Degree',
+            'DateDiss',
         ],
     ]) ?>
 

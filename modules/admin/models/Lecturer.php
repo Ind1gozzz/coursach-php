@@ -29,6 +29,7 @@ class Lecturer extends \yii\db\ActiveRecord
     public $Faculty_id;
     public $genderrr;
     public $HasChilds;
+    public $Post_idid;
     
     /**
      * {@inheritdoc}
@@ -75,9 +76,9 @@ class Lecturer extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getDissertations()
+    public function getDissertation()
     {
-        return $this->hasMany(Dissertation::className(), ['Lecturer_id' => 'id']);
+        return $this->hasOne(Dissertation::className(), ['Lecturer_id' => 'id']);
     }
 
     /**
@@ -105,9 +106,9 @@ class Lecturer extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getPosts()
+    public function getPost()
     {
-        return $this->hasMany(Post::className(), ['Lecturer_id' => 'id']);
+        return $this->hasOne(Post::className(), ['Lecturer_id' => 'id']);
     }
 
     /**
@@ -138,5 +139,24 @@ class Lecturer extends \yii\db\ActiveRecord
     public function getFaculty()
     {
         return $this -> department -> faculty -> Name;
+    }
+
+    public function getPostt()
+    {
+        return $this -> post -> Post;
+    }
+
+    public function getDisstheme()
+    {
+        return $this -> dissertation ->Theme;
+    }
+
+    public function getDegree()
+    {
+        return $this -> dissertation -> Degree;
+    }
+    public function getDateDiss()
+    {
+        return $this -> dissertation -> DateDiss;
     }
 }
