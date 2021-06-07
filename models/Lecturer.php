@@ -28,13 +28,18 @@
             return $this -> hasOne(Dissertation::className(), ['Lecturer_id' => 'id']);
         }
 
+        public function getWorkload()
+        {
+            return $this -> hasMany(Workload::className(), ['Lecturer_id' => 'id']);
+        }
+
         public function rules()
         {
             return [
                 [['faculty_id', 'depart_id'], 'safe'],
                 [['faculty_id', 'depart_id'], 'integer'],
-                ['datestart', 'date', 'format' => 'dd-mm-yyyy'],
-                ['dateend', 'date', 'format' => 'dd-mm-yyyy'],
+                ['datestart', 'date', 'format' => 'yyyy-mm-dd'],
+                ['dateend', 'date', 'format' => 'yyyy-mm-dd'],
                 [['datestart', 'dateend'], 'required']
             ];
         }

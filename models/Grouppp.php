@@ -8,8 +8,8 @@
 
     class Grouppp extends ActiveRecord
     {
-        public $groupfind;
-        public $group;
+        // public $groupfind;
+        // public $group;
 
         public static function tableName()
         {
@@ -24,6 +24,11 @@
         public function getSpeciality()
         {
             return $this -> hasOne(Speciality::className(), ['id' => 'Speciality_id']);
+        }
+
+        public function getPlan()
+        {
+            return $this -> hasMany(Plan::className(), ['Group_id' => 'id']);
         }
 
         public function rules()

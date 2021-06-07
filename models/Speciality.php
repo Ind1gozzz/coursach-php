@@ -8,12 +8,19 @@
 
     class Speciality extends ActiveRecord
     {
-        
-
         public static function tableName()
         {
             return 'speciality';
         }
+
+        public function attributeLabels()
+        {
+            return [
+                'id' => 'ID',
+                'Name' => 'Name',
+                'Department_id' => 'Department ID',
+            ];
+        }    
 
         public function getGrouppp()
         {
@@ -22,7 +29,7 @@
 
         public function getDepartment()
         {
-            return $this -> hasOne(Department::className(), ['id' => 'Department_id']);
+            return $this->hasOne(Department::className(), ['id' => 'Department_id']);
         }
 
     }

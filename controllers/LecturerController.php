@@ -6,8 +6,8 @@
     use yii\web\Controller;
     use app\models\Lecturer;
     use app\models\Faculty;
-use yii\data\ActiveDataProvider;
-use app\models\Department;
+    use yii\data\ActiveDataProvider;
+    use app\models\Department;
 
 
 
@@ -35,17 +35,17 @@ use app\models\Department;
                 $facults = Department::find()
                     -> select('id')
                     -> where(['=', 'Faculty_id', $model -> faculty_id]);
-                $depart = Department::find()
-                    -> select('id')
-                    -> where(['=', 'Faculty_id', $model -> depart_id]);
+                // $depart = Department::find()
+                //     -> select('id')
+                //     -> where(['=', 'Faculty_id', $model -> depart_id]);
 
 
                 
                 $query = Lecturer::find() -> JoinWith('dissertation') -> InnerJoinWith('department')
                     -> where(['in', 'Department_id', $facults])
-                    -> orWhere(['in', 'Department_id', $depart])
+                    -> orwhere(['in', 'Department_id', $model -> depart_id])
                     -> andWhere(['is not', 'Theme', null])
-                    -> orWhere(['between', 'DateDiss', $model -> datestart, $model -> dateend])
+                    -> andWhere(['between', 'DateDiss', $model -> datestart, $model -> dateend])
                     -> all();
 
 

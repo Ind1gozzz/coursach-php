@@ -8,16 +8,18 @@
 
     class Department extends ActiveRecord
     {
-        
-
         public static function tableName()
         {
             return 'department';
         }
 
-        public function getSpeciality()
+        public function attributeLabels()
         {
-            return $this -> hasMany(Speciality::className(), ['Department_id' => 'id']);
+            return [
+                'id' => 'ID',
+                'Name' => 'Name',
+                'Faculty_id' => 'Faculty ID',
+            ];
         }
 
         public function getFaculty()
@@ -29,5 +31,11 @@
         {
             return $this -> hasMany(Lecturer::className(), ['Department_id' => 'id']);
         }
+
+        public function getSpecialities()
+        {
+            return $this->hasOne(Speciality::className(), ['Department_id' => 'id']);
+        }
+
     }
     
