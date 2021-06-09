@@ -19,10 +19,8 @@
                 <th scope="col">Lect</th>
                 <th scope="col">Pract</th>
                 <th scope="col">Hours</th>
-                <!-- <th scope="col">Semester</th> -->
-                <th scope="col">Course</th>
-                <th scope="col">Group</th>
-                <th scope="col">Faculty</th>
+                <th scope="col">Semester</th>
+                <th scope="col">Department</th>
                 <th scope="col">Lectuer</th>
             </tr>
         </thead>
@@ -35,10 +33,8 @@
                     <th scope="row"><?= Html::encode("{$workload -> Lect}") ?> </th>
                     <th scope="row"><?= Html::encode("{$workload -> Pract}") ?> </th>
                     <th scope="row"><?= Html::encode("{$workload -> Hours}") ?> </th>
-                    <!-- <th scope="row"><?= Html::encode("{$workload -> Semester}") ?> </th> -->
-                    <th scope="row"><?= Html::encode( round((("{$workload -> Semester}" + 1) / 2), 0 ,PHP_ROUND_HALF_DOWN ))?> </th>
-                    <th scope="row"><?= Html::encode("{$workload -> lecturer -> department -> speciality -> grouppp -> Name }") ?> </th>
-                    <th scope="row"><?= Html::encode("{$workload -> lecturer -> department -> faculty -> Name}") ?> </th>
+                    <th scope="row"><?= Html::encode("{$workload -> Semester}") ?> </th>
+                    <th scope="row"><?= Html::encode("{$workload -> lecturer -> department -> Name}") ?> </th>
                     <th scope="row"><?= Html::encode("{$workload -> lecturer -> FirstName}" . " " . "{$workload -> lecturer -> LastName}") ?> </th>
 
                 </tr>

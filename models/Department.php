@@ -32,10 +32,9 @@
             return $this -> hasMany(Lecturer::className(), ['Department_id' => 'id']);
         }
 
-        public function getSpecialities()
+        public function getSpeciality()
         {
-            return $this->hasOne(Speciality::className(), ['Department_id' => 'id']);
+            return $this -> hasMany(Speciality::className(), ['Department_id' => 'id']);
         }
-
     }
     

@@ -29,7 +29,7 @@
 
         public function getDepartment()
         {
-            return $this->hasOne(Department::className(), ['id' => 'Department_id']);
+            return $this -> hasOne(Department::className(), ['id' => 'Department_id']);
         }
 
     }

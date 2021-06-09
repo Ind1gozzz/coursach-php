@@ -30,13 +30,10 @@
         {
             return $this -> hasMany(Plan::className(), ['Group_id' => 'id']);
         }
-
-        public function rules()
+        
+        public function getExams()
         {
-            return [
-                ['groupfind', 'string'],
-                ['grow', 'required']
-            ];
+            return $this -> hasMany(Grouppp::className(), ['Group_id' => 'id']);
         }
 
     }

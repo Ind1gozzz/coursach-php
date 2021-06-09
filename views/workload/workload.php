@@ -1,11 +1,29 @@
 <?php
 
     use yii\helpers\Html;
-    use yii\bootstrap\LinkPager;
+    use yii\widgets\LinkPager;
+    use yii\widgets\ActiveForm;
+    use yii\helpers\ArrayHelper;
+    use yii\grid\GridView;
 
-    $this -> title = 'Workload';
 
 ?>
+
+    <h1>Students</h1>
+
+
+
+    <div class="row">
+        <div class="col-lg-6">
+            <?php $form = ActiveForm::begin(); ?>
+        <?= $form -> field($model, 'depart_id') -> label('Department') -> dropDownList(ArrayHelper::map($departs, 'id', 'Name'), ['prompt' => 'Select the department'])?> 
+        <?= $form -> field($model, 'semes') -> label('Semester)') ?>
+
+            <?= Html::submitButton("<h5>Send</h5>", ['class' => 'btn btn-primary']) ?>
+        </div> 
+        <?php ActiveForm::end(); ?>
+        </div>
+    </div>
 
     <h1>Workload</h1>
     <table class="table table-striped table-bordered table-hover table-dark">
@@ -19,10 +37,8 @@
                 <th scope="col">Lect</th>
                 <th scope="col">Pract</th>
                 <th scope="col">Hours</th>
-                <!-- <th scope="col">Semester</th> -->
-                <th scope="col">Course</th>
-                <th scope="col">Group</th>
-                <th scope="col">Faculty</th>
+                <th scope="col">Semester</th>
+                <th scope="col">Department</th>
                 <th scope="col">Lectuer</th>
             </tr>
         </thead>
@@ -35,10 +51,8 @@
                     <th scope="row"><?= Html::encode("{$workload -> Lect}") ?> </th>
                     <th scope="row"><?= Html::encode("{$workload -> Pract}") ?> </th>
                     <th scope="row"><?= Html::encode("{$workload -> Hours}") ?> </th>
-                    <!-- <th scope="row"><?= Html::encode("{$workload -> Semester}") ?> </th> -->
-                    <th scope="row"><?= Html::encode( round((("{$workload -> Semester}" + 1) / 2), 0 ,PHP_ROUND_HALF_DOWN ))?> </th>
-                    <th scope="row"><?= Html::encode("{$workload -> lecturer -> department -> speciality -> grouppp -> Name }") ?> </th>
-                    <th scope="row"><?= Html::encode("{$workload -> lecturer -> department -> faculty -> Name}") ?> </th>
+                    <th scope="row"><?= Html::encode("{$workload -> Semester}") ?> </th>
+                    <th scope="row"><?= Html::encode("{$workload -> lecturer -> department -> Name}") ?> </th>
                     <th scope="row"><?= Html::encode("{$workload -> lecturer -> FirstName}" . " " . "{$workload -> lecturer -> LastName}") ?> </th>
 
                 </tr>

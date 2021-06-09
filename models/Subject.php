@@ -17,4 +17,9 @@
         {
             return $this -> hasMany(Workload::calssName(), ['Subject_id' => 'id']);
         }
+
+        public function getExams()
+        {
+            return $this -> hasMany(Exams::className(), ['Subject_id' => 'id']);
+        }
     }

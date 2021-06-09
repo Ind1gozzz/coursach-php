@@ -31,6 +31,15 @@
             return $this -> hasOne(Grouppp::className(), ['id' => 'Group_id']);
         }
 
+        public function getExammarks()
+        {
+            return $this -> hasMany(Exammarks::className(), ['Student_id' => 'id']);
+        }
+        
+        public function getThesiswork()
+        {
+            return $this -> hasOne(Thesiswork::className(), ['Student_id' => 'id']);
+        }
 
 
 

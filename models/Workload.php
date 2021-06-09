@@ -8,6 +8,11 @@
 
     class Workload extends ActiveRecord
     {
+        public $dept;
+        public $lect;
+        public $semes;
+        public $depart_id;
+
         public static function tableName()
         {
             return 'workload';
@@ -31,5 +36,12 @@
         public function getGroup()
         {
             return $this -> lecturer -> department -> speciality -> grouppp ->Name;
+        }
+
+        public function rules()
+        {
+            return [
+                [['depart_id' ,'semes'], 'required'],
+            ];
         }
     }

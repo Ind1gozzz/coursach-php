@@ -33,6 +33,21 @@
             return $this -> hasMany(Workload::className(), ['Lecturer_id' => 'id']);
         }
 
+        public function getExams()
+        {
+            return $this -> hasMany(Exams::className(), ['Lexturer_id' => 'id']);
+        }
+
+        public function getThesiswork()
+        {
+            return $this -> hasMany(Thesiswork::className(), ['Lecturer_id' => 'id']);
+        }
+
+        public function getPost()
+        {
+            return $this -> hasOne(Post::className(), ['Lecturer_id' => 'id']);
+        }
+
         public function rules()
         {
             return [

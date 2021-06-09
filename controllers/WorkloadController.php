@@ -5,6 +5,7 @@
     use Yii;
     use yii\web\Controller;
     use app\models\Workload;
+    use app\models\Department;
 
 
 
@@ -18,5 +19,37 @@
             return $this -> render('index-result', [
                 'workloads' => $workloads,
             ]);
+        }
+
+        public function actionWorkload()
+        {
+            $model - new Workload();
+            $workloads = Workload::find()
+                -> all();
+
+            $departs = Department::find()
+                -> select('id, Name')
+                -> all();
+
+            if ($model -> load(Yii::$app -> request -> post()))
+            {
+                $query = Workload::find() -> join('right join', 'lecturer', 'lecturer.id = Lecturer_id')
+                    -> andWhere(['=', 'lecturer.Department_id', $model -> depart_id])
+                    -> andWhere(['=', 'Semester', $model -> semes])
+                    -> all();
+
+                 return $this -> render('workload-result', [
+                    'workloads' => $query,
+                ]);
+            } else
+            {
+                return $this -> render('workload', [
+                    'workloads' => $workloads,
+                    'departs' => $departs,
+                    'model' => $model
+
+                ]);
+            }
+           
         }
     }
