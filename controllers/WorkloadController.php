@@ -23,7 +23,7 @@
 
         public function actionWorkload()
         {
-            $model - new Workload();
+            $model = new Workload();
             $workloads = Workload::find()
                 -> all();
 
@@ -31,7 +31,7 @@
                 -> select('id, Name')
                 -> all();
 
-            if ($model -> load(Yii::$app -> request -> post()))
+            if ($model -> load(Yii::$app -> request -> post()) && $model -> validate())
             {
                 $query = Workload::find() -> join('right join', 'lecturer', 'lecturer.id = Lecturer_id')
                     -> andWhere(['=', 'lecturer.Department_id', $model -> depart_id])
@@ -40,6 +40,7 @@
 
                  return $this -> render('workload-result', [
                     'workloads' => $query,
+                    'model' => $model
                 ]);
             } else
             {

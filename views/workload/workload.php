@@ -22,10 +22,10 @@
             <?= Html::submitButton("<h5>Send</h5>", ['class' => 'btn btn-primary']) ?>
         </div> 
         <?php ActiveForm::end(); ?>
-        </div>
     </div>
 
     <h1>Workload</h1>
+
     <table class="table table-striped table-bordered table-hover table-dark">
     <div class="table-responsive">
 

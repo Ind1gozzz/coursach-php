@@ -23,6 +23,7 @@
                 <th scope="col">Course</th>
                 <th scope="col">Group</th>
                 <th scope="col">Faculty</th>
+                <th scope="col">Department</th>
                 <th scope="col">Lectuer</th>
             </tr>
         </thead>
@@ -39,6 +40,7 @@
                     <th scope="row"><?= Html::encode( round((("{$workload -> Semester}" + 1) / 2), 0 ,PHP_ROUND_HALF_DOWN ))?> </th>
                     <th scope="row"><?= Html::encode("{$workload -> lecturer -> department -> speciality -> grouppp -> Name }") ?> </th>
                     <th scope="row"><?= Html::encode("{$workload -> lecturer -> department -> faculty -> Name}") ?> </th>
+                    <th scope="row"><?= Html::encode("{$workload -> lecturer -> department -> Name}") ?> </th>
                     <th scope="row"><?= Html::encode("{$workload -> lecturer -> FirstName}" . " " . "{$workload -> lecturer -> LastName}") ?> </th>
 
                 </tr>
