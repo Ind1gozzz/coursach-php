@@ -57,25 +57,21 @@
             $model = new Thesiswork();
             $thess = Thesiswork::find()
                 -> all();
-
             $lects = Lecturer::find() -> join('right join', 'post', 'post.Lecturer_id = lecturer.id')
                 -> select(['lecturer.id', 'concat(FirstName, " " , LastName) as fullName'])
                 -> where(['=', 'post.Post', "Доцент"])
                 -> orWhere(['=', 'post.Post', 'Профессор'])
                 -> asArray()
                 -> all();
-
             $departs = Department::find()
                 -> select('id, Name')
                 -> all();
             $faculties = Faculty::find()
                 -> select('id, Name')
                 -> all(); 
-
             $posts = Post::find()
                 -> select('id, Post')
                 -> all();
-
             if($model -> load(Yii::$app -> request -> post()))
             {
                 $departmentss = Department::find()
@@ -87,10 +83,9 @@
                     -> andWhere(['=', 'lecturer.Department_id', $model -> dept_id])
                     -> andWhere(['=', 'post.Post', $model -> post])
                     -> all();
-                    return $this -> render('worktheme-result', [
-                        'thess' => $query,
-                    ]);
-        
+                return $this -> render('worktheme-result', [
+                    'thess' => $query,
+                ]);
             } else
             {
                 return $this -> render('worktheme', [

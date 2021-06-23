@@ -24,6 +24,7 @@ $this->title = 'My Yii Application';
     <a class="nav-link" href="?r=thesiswork%2Findex"><h4>{11} Table "Thesis works"</h4></a>
     <a class="nav-link" href="?r=thesiswork%2Fworktheme"><h4>{12} Table "Thesisworks"</h4></a>
     <a class="nav-link" href="?r=workload%2Fworkload"><h4>{13} Table "Workload"</h4></a>
+    <a class="nav-link" href="?r=admin/student%2Findex"><h4>{!} Table "Student"</h4></a>
     
 
   </li>

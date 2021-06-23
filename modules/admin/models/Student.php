@@ -20,15 +20,8 @@ use Yii;
  * @property Grouppp $group
  * @property Thesiswork[] $thesisworks
  */
-
 class Student extends \yii\db\ActiveRecord
 {
-    public $Faculty_id;
-    public $genderrr;
-    public $StudAge;
-    public $stip;
-    public $HasChilds;
-
     /**
      * {@inheritdoc}
      */
@@ -46,8 +39,7 @@ class Student extends \yii\db\ActiveRecord
             [['FirstName', 'LastName', 'Group_id'], 'required'],
             [['Gender'], 'string'],
             [['BirthDate'], 'safe'],
-            [['StudAge'], 'safe'],
-            [['Group_id', 'Childs', 'Stipend', 'Faculty_id'], 'integer'],
+            [['Group_id', 'Childs', 'Stipend'], 'integer'],
             [['FirstName', 'LastName'], 'string', 'max' => 30],
             [['Group_id'], 'exist', 'skipOnError' => true, 'targetClass' => Grouppp::className(), 'targetAttribute' => ['Group_id' => 'id']],
         ];
@@ -64,10 +56,9 @@ class Student extends \yii\db\ActiveRecord
             'LastName' => 'Last Name',
             'Gender' => 'Gender',
             'BirthDate' => 'Birth Date',
-            'Group_id' => 'Grouppp',
+            'Group_id' => 'Group ID',
             'Childs' => 'Childs',
             'Stipend' => 'Stipend',
-            'Faculty' => 'Faculty',
         ];
     }
 
@@ -100,14 +91,9 @@ class Student extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Thesiswork::className(), ['Student_id' => 'id']);
     }
-
+    
     public function getGrouppp()
     {
         return $this -> group -> Name;
-    }
-
-    public function getFaculty()
-    {
-        return $this -> group -> speciality -> department -> faculty -> Name;
     }
 }
